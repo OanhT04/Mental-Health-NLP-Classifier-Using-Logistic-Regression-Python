@@ -4,7 +4,13 @@
  The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 18,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn). Due to substantial class imbalance and linguistic overlap among several mental health categories, the label space was consolidated into fewer, semantically coherent groups. 
  
 This reduction improved model stability, interpretability, and alignment with the capabilities of social media text data, while avoiding clinically unsupported fine-grained classification and diagnosis; 
- <img width="1125" height="334" alt="image" src="https://github.com/user-attachments/assets/cdc11a24-d77f-4d81-8102-2daa673c487f" />
+
+Neutral <- Normal 
+
+Mild-Moderate Emotional Distress <- stress, depression, anxiety have overlapping semantics and language structure
+
+High Risk Emotional Distress <- suicidal (language patterns is more distinctive)
+
 <img width="928" height="289" alt="image" src="https://github.com/user-attachments/assets/209877a8-52a9-4f7e-b5fd-a3fc23af1adb" />
 
 Pre-processing Raw Text Data: 
@@ -13,21 +19,19 @@ Pre-processing Raw Text Data:
 - Lemmatization: reduce words to base/root form
 - Corpus generation 
 
-# Vectorization using TD-IDF vs spaCy:
+# Vectorization using TD-IDF:
 TD-IDF Transform the processed tokens into numerical feature vectors.
 - high frquency words that carry little semantic value are more likely assigned low weights where as informative terms that are class specific carry higher weights 
-- helps model learn from meaningful signal words "upset" or "anxious" instead of frequent words in text such as "them", "apple", etc; drawing clearer decision boundaries between categories
-- Con: does not focus on semantic; only frequency
+- helps model learn from  signal words "upset" or "anxious" instead of frequent words in text such as "them", "apple", etc; drawing clearer decision boundaries between categories
+- Con: does not focus on semantic; only frequency of words
 
-Emotions are often: implied, indirect, expressed differently by different people; “I feel empty" is similar in meaning to “Nothing matters” and “I’m exhausted inside”
+Emotions are often: implied, indirect, expressed differently by different people; “Im so happy" is similar to "Yay!" and "I feel so blessed"; TD-IDf does not pick up on semantics 
 spaCy groups these together semantically, even with different wording.
 - Represents meaning as numbers so text can be compared and analyzed
-- Understands context; less about key words and more about meanig
+- Understands context; less about key words and more about meaning
 - Long posts often repeat ideas. spaCy’s Doc.vector averages meaning across the entire post, so repetition doesn’t overpower the result.
 
   
-# Model : Logistic Regression
-I chose Logistic Regression due to it's compatibility for classification problems; returing probabilities vs labels and pairing well with TD-IDF.
 
 # Challenges and Revisions
 - The first main challenge in this project was pre-processing unstructured social media text during my first run with a large data set! Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance. 
@@ -37,16 +41,13 @@ I chose Logistic Regression due to it's compatibility for classification problem
 - Future Improvements:
 
   -  Implement more robust text normalization techniques, including handling repeated characters, elongated words, and common social media abbreviations.
-  -  use spaCy library
-  -  Refine tokenization to better preserve meaningful expressions while removing non-informative artifacts (e.g., random character sequences).
+- Use a modern NLP approach by combining spaCy with BERT and evaluate its performance.
   -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
   -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
     
   
 
 
-
-- compare results of different classifiers; analyze performance on multiple metrics
 
 # Future Step: Risk-Flag and Resource Prompt System
 - Upon further improving model performance and robustness, future work could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress detected in social media posts, particularly indicators of extreme emoyional distress. Rather than functioning as a diagnostic tool, this system would act as an early-warning mechanism that identifies high-risk language patterns and triggers supportive interventions.
