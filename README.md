@@ -1,4 +1,4 @@
-# Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
+# High-Risk-Distress-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
  A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
 
  The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 18,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn). Due to substantial class imbalance and linguistic overlap among several mental health categories, the label space was consolidated into fewer, semantically coherent groups. 
