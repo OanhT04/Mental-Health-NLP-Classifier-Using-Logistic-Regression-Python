@@ -1,2 +1,32 @@
-# Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python
-Developed a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 1,000  user-generated text collected from X, Reddit and Instagram.
+# Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
+Developed a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 2,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn)
+
+<img width="928" height="289" alt="image" src="https://github.com/user-attachments/assets/209877a8-52a9-4f7e-b5fd-a3fc23af1adb" />
+
+Pre-processing Raw Text Data: 
+- Regex, pandas and other python libraries
+- Tokenization: split cleaned text into word/tokens
+- Lemmatization: reduce words to base/root form
+
+# Vectorization using TD-IDF:
+Transform the processed tokens into numerical feature vectors. I chose TD-IDF due to it's compatbility with text classification helping identify patterns in text; and the goal to find patterns associated to different emotional states.
+- quantifies the importance of a term in a document with respect to frequency in a document and rarity across entire corpus
+- high frquency words that carry little semantic value are assigned low weights where as informative terms that are class specific carry higher weights 
+- helps model learn from meaningful signal words "upset" or "anxious" instead of frequent words in text such as "them", "apple", etc; drawing clearer decision boundaries between categories
+- prevent frequent words from dominating feature space
+  
+# Model : Logistic Regression
+I chose Logistic Regression sue to 
+
+Challenges/Revisions
+- One of the main challenges in this project was pre-processing unstructured social media text! This challenge highlighted the importance of thoughtful preprocessing decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
+- uneven class distributions, with some mental health categories having significantly fewer samples than others which led me to apply class weighting; however this imbalance posed a challenge because bias was still present towards oversampled classes and trade offed performance
+-   focus on improving data diversity by collecting more samples for minority classes or downsampling majority classes
+
+# Future Improvements:
+- focusing more time on cleaning and pre-processing; removing more words with no semantic value by removing more or customizing a stopword list, filter short posts that lack context, handle abbreviations
+- experiment with different n-gram rages
+- compare different methods of balancing data set: undersample/oversample different classes to keep dataset even
+- different methods of balancing classes; resampling methods vs over-reliance on class weights
+- compare results of different classifiers; analyze performance on multiple metrics
+- create a risk-flag + resource prompt system with resources and support message when high emotional distress is detected in social media user post
