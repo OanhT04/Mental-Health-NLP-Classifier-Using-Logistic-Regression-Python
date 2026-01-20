@@ -25,7 +25,8 @@ TD-IDF Transform the processed tokens into numerical feature vectors.
 - helps model learn from  signal words "upset" or "anxious" instead of frequent words in text such as "them", "apple", etc; drawing clearer decision boundaries between categories
 - Con: does not focus on semantic; only frequency of words
 
-Emotions are often: implied, indirect, expressed differently by different people; “Im so happy" is similar to "Yay!" and "I feel so blessed"; TD-IDf does not pick up on semantics 
+Note:
+Emotions are often: implied, indirect, expressed differently by different people; “Im so happy" is similar to "Yay!" and "I feel so blessed"; 
 spaCy groups these together semantically, even with different wording.
 - Represents meaning as numbers so text can be compared and analyzed
 - Understands context; less about key words and more about meaning
@@ -41,7 +42,7 @@ spaCy groups these together semantically, even with different wording.
 - Future Improvements:
 
   -  Implement more robust text normalization techniques, including handling repeated characters, elongated words, and common social media abbreviations.
-- Use a modern NLP approach by combining spaCy with BERT and evaluate its performance.
+- Use a modern NLP approach by using spaCy or BERT and evaluate its performance.
   -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
   -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
     
