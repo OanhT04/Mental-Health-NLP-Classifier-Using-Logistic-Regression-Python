@@ -1,7 +1,9 @@
 # Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
  A Personal project building a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 18,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn). Due to substantial class imbalance and linguistic overlap among several mental health categories, the label space was consolidated into fewer, semantically coherent groups. 
+ 
 
-This reduction improved model stability, interpretability, and alignment with the capabilities of social media text data, while avoiding clinically unsupported fine-grained classification!
+This reduction improved model stability, interpretability, and alignment with the capabilities of social media text data, while avoiding clinically unsupported fine-grained classification; 
+Such a system would emphasize harm reduction and awareness, positioning the model as a decision-support tool rather than a replacement for professional care. Future evaluation would focus not only on predictive accuracy, but also on minimizing false positives, ensuring appropriate messaging tone, and aligning system behavior with ethical guidelines for mental health–related interventio!
  <img width="1125" height="334" alt="image" src="https://github.com/user-attachments/assets/cdc11a24-d77f-4d81-8102-2daa673c487f" />
 <img width="928" height="289" alt="image" src="https://github.com/user-attachments/assets/209877a8-52a9-4f7e-b5fd-a3fc23af1adb" />
 
@@ -38,6 +40,7 @@ I chose Logistic Regression due to it's compatibility for classification problem
 
 - compare results of different classifiers; analyze performance on multiple metrics
 
-# Next Goal:
-Perform analysis on revisions and further experimentation
-Upon improving model; make some tweaks and create a risk-flag + resource prompt system when extreme emotional distress (suicide ideation) is detected: example of a mental health resources (hotlines) and support message pop up on app, when high emotional distress is detected in social media user post
+# Future Work: Risk-Flag and Resource Prompt System
+- Upon further improving model performance and robustness, future work could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress detected in social media posts, particularly indicators of suicidal ideation. Rather than functioning as a diagnostic tool, this system would act as an early-warning mechanism that identifies high-risk language patterns and triggers supportive interventions.
+- When a post is classified as high risk, the system could prompt the application to display a mental health support message alongside accessible resources, such as crisis hotline information, text-based support services, or links to mental health organizations. The goal of this approach would be to provide timely, non-intrusive support and encourage help-seeking behavior, while maintaining user privacy and ethical safeguards.
+
