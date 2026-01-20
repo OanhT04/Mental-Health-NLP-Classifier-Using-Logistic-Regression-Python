@@ -1,5 +1,6 @@
 # Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
  My first learning ML project building a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 2,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn)
+ <img width="1838" height="548" alt="image" src="https://github.com/user-attachments/assets/2ed02f6d-b880-4013-b35e-7e4d3bd956e1" />
 
 <img width="928" height="289" alt="image" src="https://github.com/user-attachments/assets/209877a8-52a9-4f7e-b5fd-a3fc23af1adb" />
 
@@ -38,4 +39,4 @@ Challenges/Revisions
 
 # Next Goal:
 Perform analysis on revisions and further experimentation
-Upon improving model; make some tweaks and create a risk-flag + resource prompt system: example of a resources and support message pop up on app, when high emotional distress is detected in social media user post
+Upon improving model; make some tweaks and create a risk-flag + resource prompt system when extreme emotional distress (suicide ideation) is detected: example of a mental health resources (hotlines) and support message pop up on app, when high emotional distress is detected in social media user post
