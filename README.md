@@ -16,17 +16,15 @@ Transform the processed tokens into numerical feature vectors. I chose TD-IDF du
 - prevent frequent words from dominating feature space
   
 # Model : Logistic Regression
-I chose Logistic Regression sue to 
+I chose Logistic Regression due to it's compatibility for classification problems; returing probabilities vs labels and pairing well with TD-IDF.
 
 Challenges/Revisions
 - One of the main challenges in this project was pre-processing unstructured social media text! This challenge highlighted the importance of thoughtful preprocessing decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
 - uneven class distributions, with some mental health categories having significantly fewer samples than others which led me to apply class weighting; however this imbalance posed a challenge because bias was still present towards oversampled classes and trade offed performance
--   focus on improving data diversity by collecting more samples for minority classes or downsampling majority classes
-
-# Future Improvements:
-- focusing more time on cleaning and pre-processing; removing more words with no semantic value by removing more or customizing a stopword list, filter short posts that lack context, handle abbreviations
+- focusing more time on cleaning and pre-processing; removing more words with no semantic value through adding custome stopword lists to filter, remove short posts or non coherent posts that lack context, handle abbreviations, etc. 
 - experiment with different n-gram rages
-- compare different methods of balancing data set: undersample/oversample different classes to keep dataset even
-- different methods of balancing classes; resampling methods vs over-reliance on class weights
+- different methods of balancing classes; resampling methods vs reliance on class weights
 - compare results of different classifiers; analyze performance on multiple metrics
-- create a risk-flag + resource prompt system with resources and support message when high emotional distress is detected in social media user post
+
+# Next Goal:
+Upon improving model; create a risk-flag + resource prompt system with resources and support message when high emotional distress is detected in social media user post
