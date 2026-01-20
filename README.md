@@ -19,7 +19,7 @@ I chose Logistic Regression due to it's compatibility for classification problem
 
 Challenges/Revisions
 - The first main challenges in this project was pre-processing unstructured social media text during my first run. This challenge highlighted the importance of thoughtful preprocessing decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance. For example, the top classifying words weighted random letters/non meaningful words for depression reflecting the need for better data cleaning and pre-processing
-- <img width="1640" height="1173" alt="image" src="https://github.com/user-attachments/assets/5a3c0f41-24c2-4d6e-9ccc-fb8327b2c0b1" />
+- <img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/5a3c0f41-24c2-4d6e-9ccc-fb8327b2c0b1" />
 
 - uneven class distributions, with some mental health categories having significantly fewer samples than others which led me to apply class weighting; however this imbalance posed a challenge because bias was still present towards oversampled classes and trade offed performance
 - focusing more time on cleaning and pre-processing; removing more words with no semantic value through adding custome stopword lists to filter, remove short posts or non coherent posts that lack context, handle abbreviations, etc. 
