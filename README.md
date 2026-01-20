@@ -1,5 +1,5 @@
 # Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns. 
+ A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
 
  The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 18,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn). Due to substantial class imbalance and linguistic overlap among several mental health categories, the label space was consolidated into fewer, semantically coherent groups. 
  
@@ -13,11 +13,18 @@ Pre-processing Raw Text Data:
 - Lemmatization: reduce words to base/root form
 - Corpus generation 
 
-# Vectorization using TD-IDF:
-Transform the processed tokens into numerical feature vectors. I chose TD-IDF due to it's compatbility with text classification helping identify patterns in text; and the goal to find patterns associated to different emotional states.
-- quantifies the importance of a term in a document with respect to frequency in a document and rarity across entire corpus
+# Vectorization using TD-IDF vs spaCy:
+TD-IDF Transform the processed tokens into numerical feature vectors.
 - high frquency words that carry little semantic value are more likely assigned low weights where as informative terms that are class specific carry higher weights 
 - helps model learn from meaningful signal words "upset" or "anxious" instead of frequent words in text such as "them", "apple", etc; drawing clearer decision boundaries between categories
+- Con: does not focus on semantic; only frequency
+
+Emotions are often: implied, indirect, expressed differently by different people; “I feel empty" is similar in meaning to “Nothing matters” and “I’m exhausted inside”
+spaCy groups these together semantically, even with different wording.
+- Represents meaning as numbers so text can be compared and analyzed
+- Understands context; less about key words and more about meanig
+- Long posts often repeat ideas. spaCy’s Doc.vector averages meaning across the entire post, so repetition doesn’t overpower the result.
+
   
 # Model : Logistic Regression
 I chose Logistic Regression due to it's compatibility for classification problems; returing probabilities vs labels and pairing well with TD-IDF.
@@ -41,7 +48,7 @@ I chose Logistic Regression due to it's compatibility for classification problem
 
 - compare results of different classifiers; analyze performance on multiple metrics
 
-# Future Work: Risk-Flag and Resource Prompt System
-- Upon further improving model performance and robustness, future work could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress detected in social media posts, particularly indicators of suicidal ideation. Rather than functioning as a diagnostic tool, this system would act as an early-warning mechanism that identifies high-risk language patterns and triggers supportive interventions.
+# Future Step: Risk-Flag and Resource Prompt System
+- Upon further improving model performance and robustness, future work could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress detected in social media posts, particularly indicators of extreme emoyional distress. Rather than functioning as a diagnostic tool, this system would act as an early-warning mechanism that identifies high-risk language patterns and triggers supportive interventions.
 - When a post is classified as high risk, the system could prompt the application to display a mental health support message alongside accessible resources, such as crisis hotline information, text-based support services, or links to mental health organizations. The goal of this approach would be to provide timely, non-intrusive support and encourage help-seeking behavior, while maintaining user privacy and ethical safeguards.
 
