@@ -1,9 +1,9 @@
 # Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- A Personal project building a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 18,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn). Due to substantial class imbalance and linguistic overlap among several mental health categories, the label space was consolidated into fewer, semantically coherent groups. 
- 
+ A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns. 
 
-This reduction improved model stability, interpretability, and alignment with the capabilities of social media text data, while avoiding clinically unsupported fine-grained classification; 
-Such a system would emphasize harm reduction and awareness, positioning the model as a decision-support tool rather than a replacement for professional care. Future evaluation would focus not only on predictive accuracy, but also on minimizing false positives, ensuring appropriate messaging tone, and aligning system behavior with ethical guidelines for mental health–related interventio!
+ The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 18,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn). Due to substantial class imbalance and linguistic overlap among several mental health categories, the label space was consolidated into fewer, semantically coherent groups. 
+ 
+This reduction improved model stability, interpretability, and alignment with the capabilities of social media text data, while avoiding clinically unsupported fine-grained classification and diagnosis; 
  <img width="1125" height="334" alt="image" src="https://github.com/user-attachments/assets/cdc11a24-d77f-4d81-8102-2daa673c487f" />
 <img width="928" height="289" alt="image" src="https://github.com/user-attachments/assets/209877a8-52a9-4f7e-b5fd-a3fc23af1adb" />
 
@@ -11,6 +11,7 @@ Pre-processing Raw Text Data:
 - Regex, pandas and other python libraries
 - Tokenization: split cleaned text into word/tokens
 - Lemmatization: reduce words to base/root form
+- Corpus generation 
 
 # Vectorization using TD-IDF:
 Transform the processed tokens into numerical feature vectors. I chose TD-IDF due to it's compatbility with text classification helping identify patterns in text; and the goal to find patterns associated to different emotional states.
@@ -23,17 +24,17 @@ I chose Logistic Regression due to it's compatibility for classification problem
 
 # Challenges and Revisions
 - The first main challenge in this project was pre-processing unstructured social media text during my first run with a large data set! Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance. 
-- Especially with imbalanced data and classifications with overlapping semantic meaning vs classes such as "suicidal" that tend to have greater prediction due to more distinct language; when I experimented with the original class labels from the dataset; depression, anxiety and stress tended to overlap; It proved more effective to consolidate the labels into broader, semantically coherent groups that reflect emotional severity rather than diagnostic categories. Grouping posts along a continuum from normal, to emotional distress, to high-risk (suicidal ideation) improved model stability, interpretability, and alignment with the linguistic characteristics of the data, while preserving the ability to identify critical high-risk content (which is the main focus)
+- When I experimented with the original class labels from the dataset; depression, anxiety and stress tended to overlap; It proved more effective to consolidate the labels into broader, semantically coherent groups that reflect emotional severity rather than diagnostic categories. Grouping posts along a continuum from normal, to emotional distress, to high-risk (suicidal ideation) improved model stability, interpretability, and alignment with the linguistic characteristics of the data, while preserving the ability to identify critical high-risk content (which is the main focus)
 
    
 - Future Improvements:
 
   -  Implement more robust text normalization techniques, including handling repeated characters, elongated words, and common social media abbreviations.
+  -  use spaCy library
   -  Refine tokenization to better preserve meaningful expressions while removing non-informative artifacts (e.g., random character sequences).
   -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
-  -  Introduced additional filtering to remove low-information tokens without overly aggressive cleaning that could eliminate important signal words.
   -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
-  -  Iteratively evaluate preprocessing revisions to balance model performance and explainability, particularly for sensitive emotional health–related content.
+    
   
 
 
