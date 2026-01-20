@@ -1,5 +1,5 @@
 # Mental-Health-NLP-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- My first learning ML project building a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 2,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn)
+ My first learning ML project building a multi-class NLP classification model in Python to identify mental health–related language patterns including stress, anxiety, depression, suicidal ideation, and no symptoms in 15,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. (Sci-kit-learn)
 
 <img width="928" height="289" alt="image" src="https://github.com/user-attachments/assets/209877a8-52a9-4f7e-b5fd-a3fc23af1adb" />
 
@@ -19,7 +19,10 @@ I chose Logistic Regression due to it's compatibility for classification problem
 
 Challenges/Revisions
 - One of the main challenges in this project was pre-processing unstructured social media text! This challenge highlighted the importance of thoughtful preprocessing decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
-- uneven class distributions, with some mental health categories having significantly fewer samples than others which led me to apply class weighting; however this imbalance posed a challenge because bias was still present towards oversampled classes and trade offed performance
+ 
+- uneven class distributions, with some mental health categories having significantly fewer samples than others which led me to apply class weighting; however this imbalance posed a challenge because bias was still present towards oversampled classes and trade offed performance; Below is the initial class distribution
+  <img width="2531" height="625" alt="image" src="https://github.com/user-attachments/assets/46a948ce-1a3e-4067-b458-8971ad6eca96" />
+
 - focusing more time on cleaning and pre-processing; removing more words with no semantic value through adding custome stopword lists to filter, remove short posts or non coherent posts that lack context, handle abbreviations, etc. 
 - experiment with different n-gram rages
 - different methods of balancing classes; resampling methods vs reliance on class weights
