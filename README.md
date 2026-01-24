@@ -1,10 +1,9 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
  A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
  
-The main focus: detection of **high risk text** language patterns associated to suicide ideation or extreme emotional distress. 
-
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
 
+The main focus: detection of **high risk text** language patterns associated to suicide ideation or extreme emotional distress and provide banner pop ups of mental health resouurce information.
 
 https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset
 Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classification of Mental Illnesses on Social Media using RoBERTa
@@ -80,20 +79,19 @@ The majority of its positive predictions are correct (high precision).
 
    
 - Future Improvements:
-- Use a modern NLP approach by using spaCy or BERT and evaluate its performance.
+- Use a modern NLP approach by using spaCy or BERT and evaluate performance.
   -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
   -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
-  
-    
-Note for improvement:
-Emotions are often: implied, indirect, expressed differently by different people; “Im so happy" is similar to "Yay!" and "I feel so blessed"; 
-spaCy groups these together semantically, even with different wording whereas this current model relies on frequency of words.
-- Represents meaning as numbers so text can be compared and analyzed
-- Understands context; less about key words and more about meaning
-  
+-   semantic analysis:
+     Emotions are often: implied, indirect, expressed differently by different people; “Im so happy" is
+     similar to "Yay!" and "I feel so blessed"; 
+     spaCy can group these phrases together semantically, even with different wording or spelling. 
+     - Represents meaning as numbers so text can be compared and analyzed
+     - Understands context
+       
 
 
 # Future Step: Risk-Flag and Resource Prompt System
-- Upon further improving model performance and robustness, a future project could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress with a banner pop up. Rather than functioning as a diagnostic tool, this system would identify high-risk language patterns and triggers supportive interventions.
-- When a post is classified as high risk only; the system could prompt the application to display a mental health support message alongside accessible resources, such as crisis hotline information/mental health resources. The goal of this approach would be to provide timely, non-intrusive support and encourage help-seeking behavior, while maintaining user privacy and ethical safeguards.
+-  a future personal project could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress with a banner pop up. Rather than functioning as a diagnostic tool, this system would identify high-risk language patterns and encourage help-seeking behavior.
+- When a post is classified as high risk only; the system could prompt the application to display a mental health support message alongside accessible resources, such as crisis hotline information/mental health resources. 
 
