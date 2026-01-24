@@ -1,5 +1,7 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. The main focus is proper detection of **high risk text** language patterns associated to suicide ideation. 
+ A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
+ 
+The main focus: detection of **high risk text** language patterns associated to suicide ideation or extreme emotional distress. 
 
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
 
@@ -55,21 +57,23 @@ Goal: High Risk Emotional Distress Scores: precision score >85, recall > 85, f1 
 
 
 <img width="1111" height="465" alt="image" src="https://github.com/user-attachments/assets/e3a62cc4-81ad-4221-85e3-eae7eec60693" />
-Precision -> When we show a banner, how often was it actually appropriate?
 <img width="1595" height="1407" alt="image" src="https://github.com/user-attachments/assets/8a9ff9e4-d0bc-4f22-a9a1-de032e0a8f4b" />
 
 Behavior implied by results
+
 Precision > 0.89
 → precision tells us how often the model is correct when classifying a post as high risk. High precision means the model makes few false positive errors.
+
 Recall > 0.92
 → Recall shows how often the model successfully detects high risk user text. High recall means the model makes few false negative errors!
+
 F1 > 0.91
 -> An F1 score of 0.91 indicates that the model achieves a strong balance between precision and recall.
 
 The model correctly identifies most positive cases (high recall), and
 The majority of its positive predictions are correct (high precision).
 
-
+#Analysis ----
 
 # Challenges
 -  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
