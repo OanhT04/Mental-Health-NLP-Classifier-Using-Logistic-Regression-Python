@@ -1,5 +1,5 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. The main focus is proper detection of high risk text language patterns associated to suicide ideation. 
+ A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. The main focus is proper detection of **high risk text** language patterns associated to suicide ideation. 
 
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
 
@@ -7,7 +7,7 @@ The dataset categorized posts related to stress, anxiety, depression, suicidal i
 https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset
 Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classification of Mental Illnesses on Social Media using RoBERTa
 
-# Pre-processing Raw Text Data:  Regex, pandas and other python libraries
+# Clean.py - Pre-processing Text Data:  Regex, pandas and other python libraries
 - Standardizes mental health labels into consistent categories
 - Expands contractions and normalizes slang and abbreviations
 - Removes URLs, punctuation, special characters, and extra whitespace
@@ -15,17 +15,17 @@ Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classi
 - Splits concatenated words using word segmentation
 - Filters scrambled, duplicated, or low-quality text
 - Removes duplicate posts
-- Exports a cleaned dataset ready for NLP models
 
 
-# Jupyter Notebook
-1. Split data
-
+# Jupyter Notebook -pandas, sci-kit learn, 
+1. Load data and split for training/testing
+   
 2. Lemmatize + Vectorization with TD-IDF
 - analyzer word
 - n gram range = (1, 2)
 - remove stop words
 - remove words that commonly appear in >80% of text entries
+  
 
 # Vectorization using TD-IDF:
 TD-IDF Transform the processed tokens into numerical feature vectors.
@@ -34,7 +34,9 @@ TD-IDF Transform the processed tokens into numerical feature vectors.
 - Con: does not focus on semantic; only frequency of words
 
 
-Logistic Regression:
+# Training and Testing: Logistic Regression: 
+Goal: High Risk Emotional Distress Scores: precision score >85, recall > 85, f1 score  > 90
+
 
         import numpy as np
         from sklearn.linear_model import LogisticRegression
@@ -53,12 +55,32 @@ Logistic Regression:
 
 
 <img width="1111" height="465" alt="image" src="https://github.com/user-attachments/assets/e3a62cc4-81ad-4221-85e3-eae7eec60693" />
-
+Precision -> When we show a banner, how often was it actually appropriate?
 <img width="1595" height="1407" alt="image" src="https://github.com/user-attachments/assets/8a9ff9e4-d0bc-4f22-a9a1-de032e0a8f4b" />
 
+Behavior implied by results
+Precision > 0.89
+→ precision tells us how often the model is correct when classifying a post as high risk. High precision means the model makes few false positive errors.
+Recall > 0.92
+→ Recall shows how often the model successfully detects high risk user text. High recall means the model makes few false negative errors!
+F1 > 0.91
+-> An F1 score of 0.91 indicates that the model achieves a strong balance between precision and recall.
+
+The model correctly identifies most positive cases (high recall), and
+The majority of its positive predictions are correct (high precision).
 
 
 
+# Challenges
+-  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
+
+   
+- Future Improvements:
+- Use a modern NLP approach by using spaCy or BERT and evaluate its performance.
+  -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
+  -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
+  
+    
 Note for improvement:
 Emotions are often: implied, indirect, expressed differently by different people; “Im so happy" is similar to "Yay!" and "I feel so blessed"; 
 spaCy groups these together semantically, even with different wording whereas this current model relies on frequency of words.
@@ -67,23 +89,7 @@ spaCy groups these together semantically, even with different wording whereas th
   
 
 
-# Challenges and Revisions
--  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
-- some common words with high weight were words that carried little semantic meaning
-
-   
-- Future Improvements:
-
-  -  Implement more robust text normalization techniques, including handling repeated characters, elongated words, and common social media abbreviations.
-- Use a modern NLP approach by using spaCy or BERT and evaluate its performance.
-  -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
-  -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
-  
-    
-
-
-
 # Future Step: Risk-Flag and Resource Prompt System
-- Upon further improving model performance and robustness, future work could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress with a banner pop up. Rather than functioning as a diagnostic tool, this system would identify high-risk language patterns and triggers supportive interventions.
+- Upon further improving model performance and robustness, a future project could involve the development of a risk-flag and resource prompt system designed to respond to extreme emotional distress with a banner pop up. Rather than functioning as a diagnostic tool, this system would identify high-risk language patterns and triggers supportive interventions.
 - When a post is classified as high risk only; the system could prompt the application to display a mental health support message alongside accessible resources, such as crisis hotline information/mental health resources. The goal of this approach would be to provide timely, non-intrusive support and encourage help-seeking behavior, while maintaining user privacy and ethical safeguards.
 
