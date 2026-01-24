@@ -1,5 +1,5 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
+ Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
  
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
 
@@ -69,10 +69,9 @@ Recall > 0.92
 F1 > 0.91
 -> An F1 score of 0.91 indicates that the model achieves a strong balance between precision and recall.
 
-The model correctly identifies most positive cases (high recall), and
-The majority of its positive predictions are correct (high precision).
 
-#Analysis ----
+
+#Analysis ---The model correctly identifies most positive cases (high recall), while ensuring that the majority of its positive predictions are correct (high precision). Since the primary goal is to detect the majority of high-risk posts, this balanced performance results in consistently high classification reliability rather than reliance on accuracy alone; suitable for low-intensity risk alert systems that provide non-intrusive, support banner notifications when detecting extreme emotional distress in user text language. 
 
 # Challenges
 -  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
