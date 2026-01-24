@@ -2,10 +2,9 @@
  A Personal project building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. The main focus is proper detection of high risk text language patterns associated to suicide ideation. 
 
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
+
+
 https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset
-
-<img width="573" height="249" alt="image" src="https://github.com/user-attachments/assets/3f6bcf0c-616c-49c6-a5a9-7cd127880b1f" />
-
 Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classification of Mental Illnesses on Social Media using RoBERTa
 
 # Pre-processing Raw Text Data:  Regex, pandas and other python libraries
@@ -17,7 +16,6 @@ Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classi
 - Filters scrambled, duplicated, or low-quality text
 - Removes duplicate posts
 - Exports a cleaned dataset ready for NLP models
-
 
 
 # Jupyter Notebook
@@ -35,28 +33,28 @@ TD-IDF Transform the processed tokens into numerical feature vectors.
 - helps model learn from  signal words "upset" or "anxious" instead of frequent words in text such as "them", "he", etc; drawing clearer decision boundaries between categories
 - Con: does not focus on semantic; only frequency of words
 
-3. Model: Logistic Regression: OVR Classifier
 
-       # Base binary classifier used per class (one-vs-rest)
-           base_lr = LogisticRegression(
-               solver="liblinear",
-               max_iter=5000,
-               random_state=42,
-               class_weight="balanced"  
-           )
-   
-           clf_ovr = OneVsRestClassifier(base_lr)
-           
-           # Train
-           clf_ovr.fit(X_train_vec, y_train)
-           
-           # Predict
-           pred_ovr = clf_ovr.predict(X_test_vec)
-           
-           print(classification_report(y_test, pred_ovr))
-# Examples
-<img width="2192" height="1137" alt="image" src="https://github.com/user-attachments/assets/7b33fb86-ad9d-410a-92a3-4a0567afafe9" />
-]   
+Logistic Regression:
+
+        import numpy as np
+        from sklearn.linear_model import LogisticRegression
+        from sklearn.metrics import classification_report
+        
+        
+        clf = LogisticRegression(
+            solver="lbfgs",
+            multi_class="multinomial",
+            class_weight="balanced",
+            max_iter=5000
+        )
+        clf.fit(X_train_vec, y_train)
+        pred = clf.predict(X_test_vec)
+        print(classification_report(y_test, pred, target_names=all_target_names))
+
+
+<img width="1111" height="465" alt="image" src="https://github.com/user-attachments/assets/e3a62cc4-81ad-4221-85e3-eae7eec60693" />
+
+<img width="1595" height="1407" alt="image" src="https://github.com/user-attachments/assets/8a9ff9e4-d0bc-4f22-a9a1-de032e0a8f4b" />
 
 
 
@@ -67,10 +65,11 @@ spaCy groups these together semantically, even with different wording whereas th
 - Represents meaning as numbers so text can be compared and analyzed
 - Understands context; less about key words and more about meaning
   
-  
+
 
 # Challenges and Revisions
-- The first main challenge in this project was pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance. 
+-  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
+- some common words with high weight were words that carried little semantic meaning
 
    
 - Future Improvements:
