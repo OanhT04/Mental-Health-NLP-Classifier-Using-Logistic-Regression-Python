@@ -1,5 +1,5 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
+ Part 1 of side project: Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
  
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
 
@@ -21,11 +21,11 @@ Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classi
 # Jupyter Notebook -pandas, sci-kit learn, 
 1. Load data and split for training/testing
    
-2. Lemmatize + Vectorization with TD-IDF
+2. Lemmatize (spacy) + Vectorization with TD-IDF
 - analyzer word
 - n gram range = (1, 2)
 - remove stop words
-- remove words that commonly appear in >80% of text entries
+- remove words that commonly appear in >60% of text entries
   
 
 # Vectorization using TD-IDF:
@@ -64,7 +64,7 @@ Precision > 0.89
 → precision tells us how often the model is correct when classifying a post as high risk. High precision means the model makes few false positive errors.
 
 Recall > 0.92
-→ Recall shows how often the model successfully detects high risk user text. High recall means the model makes few false negative errors!
+→ Recall shows how often the model successfully detects high risk user text.
 
 F1 > 0.91
 -> An F1 score of 0.91 indicates that the model achieves a strong balance between precision and recall.
@@ -78,7 +78,7 @@ F1 > 0.91
 
    
 - Future Improvements:
-- Use a modern NLP approach by using spaCy or BERT and evaluate performance.
+- Use a modern NLP approach by using spaCy or/and transformers and evaluate performance.
   -  Reduced noise introduced by class imbalance by reassessing feature importance across categories rather than relying solely on frequency-based weighting.
   -  Improve feature interpretability by validating top-weighted terms against domain relevance and semantic meaning.
 -   semantic analysis:
