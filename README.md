@@ -1,10 +1,19 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
- Part 1 of side project: Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
+project: Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
  
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
 
 The main focus: detection of **high risk text** language patterns associated to suicide ideation or extreme emotional distress and provide banner pop ups of mental health resouurce information.
 
+#### Goal and metrics 
+Focus on Recall -> Because the goal of this classifier is to detect high-risk language and trigger a popup with mental health support resources, recall is prioritized over precision. It is more desirable to successfully identify as many high-risk cases as possible, even if that results in some false positives. The cost of a failing to detect genuinely high-risk language, is significantly higher than the cost of detecting false positives. Therefore, the model will be optimized for high recall on the high-risk class, accepting an increased false positive rate as a tradeoff.
+
+##### While this may result in some users seeing the popup of mental health services unnecessarily, the impact of these false positives is not considered highly significant, as the intervention is low-friction, non-accusatory, and easy to dismiss.  In contrast, missing a truly high-risk case carries substantially greater potential harm.  At most, a false positive may cause brief and minor inconvenience. In contrast, missing a truly high-risk social media post could mean missing an important opportunity to surface supportive resources, encourage someone to reach out for help, or raise awareness of available services at a moment when they may be most needed.
+
+##### While this may result in some users seeing the popup of mental health services unnecessarily, the impact of these false positives is not considered highly significant, as the intervention is low-friction, non-accusatory, and easy to dismiss; and still can benefit users through awareness of support services. In contrast, missing a truly high-risk case carries substantially greater potential harm. At the same time I hope to find a reasomable balance of precision 
+
+
+#### Dataset Source:
 https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset
 Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classification of Mental Illnesses on Social Media using RoBERTa
 
@@ -55,23 +64,17 @@ Goal: High Risk Emotional Distress Scores: precision score >85, recall > 85, f1 
         print(classification_report(y_test, pred, target_names=all_target_names))
 
 
-<img width="1111" height="465" alt="image" src="https://github.com/user-attachments/assets/e3a62cc4-81ad-4221-85e3-eae7eec60693" />
-<img width="1595" height="1407" alt="image" src="https://github.com/user-attachments/assets/8a9ff9e4-d0bc-4f22-a9a1-de032e0a8f4b" />
 
-Behavior implied by results
 
-Precision > 0.89
+Precision > 
 → precision tells us how often the model is correct when classifying a post as high risk. High precision means the model makes few false positive errors.
 
-Recall > 0.92
+Recall > 
 → Recall shows how often the model successfully detects high risk user text.
 
-F1 > 0.91
--> An F1 score of 0.91 indicates that the model achieves a strong balance between precision and recall.
 
 
-
-#Analysis ---The model correctly identifies most positive cases (high recall), while ensuring that the majority of its positive predictions are correct (high precision). Since the primary goal is to detect the majority of high-risk posts, this balanced performance results in consistently high classification reliability rather than reliance on accuracy alone; suitable for low-intensity risk alert systems that provide non-intrusive, support banner notifications when detecting extreme emotional distress in user text language. 
+#Analysis ---The model correctly identifies most positive cases (high recall), while ensuring a reasonable balance of its predictions being correct ( precision). Since the primary goal is to detect the majority of high-risk posts, this balanced performance results in consistently high classification reliability rather than reliance on accuracy alone; suitable for low-intensity risk alert systems that provide non-intrusive, support banner notifications when detecting extreme emotional distress in user text language. 
 
 # Challenges
 -  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
