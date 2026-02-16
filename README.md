@@ -1,21 +1,30 @@
 # High-Risk-Distress-Natural-Language-Processing-Classifier-Using-Logistic-Regression-Python: Supervised Machine Learning
-project: Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. 
+Building a multi-class NLP classification model in Python to identify emotional distress risk–related language patterns and evaluating different pre-processing approaches. One using TD-IDF and Logistic Regression, and one using SpaCy!!
  
 The dataset categorized posts related to stress, anxiety, depression, suicidal ideation, and no symptoms in 20,000+ user-generated text collected from X, Reddit and Instagram on Kaggle. 
-
+-
 The main focus: detection of **high risk text** language patterns associated to suicide ideation or extreme emotional distress and provide banner pop ups of mental health resouurce information.
 
-#### Goal and metrics 
-Focus on Recall -> Because the goal of this classifier is to detect high-risk language and trigger a popup with mental health support resources, recall is prioritized over precision. It is more desirable to successfully identify as many high-risk cases as possible, even if that results in some false positives. The cost of a failing to detect genuinely high-risk language, is significantly higher than the cost of detecting false positives. Therefore, the model will be optimized for high recall on the high-risk class, accepting an increased false positive rate as a tradeoff.
+#### Goal and metrics: Recall over Precision
+Because the goal of the classifier is to detect high-risk language and surface mental health support resources, recall is prioritized over precision. It is preferable to identify as many high-risk cases as possible, even if some false positives occur. These false positives are considered low impact, as the popup is low-friction, non-accusatory, and easy to dismiss. In contrast, missing a truly high-risk post could mean missing an opportunity to encourage someone to seek support when it may be most needed. At the same time, a reasonable level of precision will be maintained to avoid overly intrusive alerts.
 
-##### While this may result in some users seeing the popup of mental health services unnecessarily, the impact of these false positives is not considered highly significant, as the intervention is low-friction, non-accusatory, and easy to dismiss.  In contrast, missing a truly high-risk case carries substantially greater potential harm.  At most, a false positive may cause brief and minor inconvenience. In contrast, missing a truly high-risk social media post could mean missing an important opportunity to surface supportive resources, encourage someone to reach out for help, or raise awareness of available services at a moment when they may be most needed.
+## Exploring the Data Before Modeling
+Overlap Between Depression and Suicide Risk Language
 
-##### While this may result in some users seeing the popup of mental health services unnecessarily, the impact of these false positives is not considered highly significant, as the intervention is low-friction, non-accusatory, and easy to dismiss; and still can benefit users through awareness of support services. In contrast, missing a truly high-risk case carries substantially greater potential harm. At the same time I hope to find a reasomable balance of precision 
+Language associated with depression often overlaps with language indicative of suicidal ideation. Expressions such as hopelessness, worthlessness, emotional exhaustion, or feeling like a burden are common in both depression and suicide risk signals. As a result, classifiers trained to detect suicide risk may assign high-risk scores to strongly depressive content, even without explicit suicidal intent.
+
+This overlap can reduce precision, as some depressive posts may be flagged as high risk. However, in an intervention context (e.g., triggering a supportive popup), this tradeoff is acceptable. Individuals expressing depressive symptoms may still benefit from supportive resources. Therefore, the system prioritizes sensitivity to distress-related language, recognizing that depression and suicide risk exist on a continuum and are not always clearly separable in natural language.
+
+As seen below the most common misclassification for suicidal ideation belongs to depression classification under spaCy. 
+
+<img width="1868" height="1361" alt="image" src="https://github.com/user-attachments/assets/e929a34d-ef7f-436e-8fc9-d0d462ee0c45" />
 
 
-#### Dataset Source:
+
+
+### Dataset Source:
 https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset
-Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classification of Mental Illnesses on Social Media using RoBERTa
+Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classification of Mental Illnesses on Social Media 
 
 # Clean.py - Pre-processing Text Data:  Regex, pandas and other python libraries
 - Standardizes mental health labels into consistent categories
@@ -29,7 +38,6 @@ Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classi
 
 # Jupyter Notebook -pandas, sci-kit learn, 
 1. Load data and split for training/testing
-   
 2. Lemmatize (spacy) + Vectorization with TD-IDF
 - analyzer word
 - n gram range = (1, 2)
@@ -38,14 +46,12 @@ Murarka, A., Radhakrishnan, B., \& Ravichandran, S. (2021). Detection and Classi
   
 
 # Vectorization using TD-IDF:
-TD-IDF Transform the processed tokens into numerical feature vectors.
 - high frquency words that carry little semantic value are more likely assigned low weights where as informative terms that are class specific carry higher weights 
 - helps model learn from  signal words "upset" or "anxious" instead of frequent words in text such as "them", "he", etc; drawing clearer decision boundaries between categories
 - Con: does not focus on semantic; only frequency of words
 
 
 # Training and Testing: Logistic Regression: 
-Goal: High Risk Emotional Distress Scores: precision score >85, recall > 85, f1 score  > 90
 
 
         import numpy as np
@@ -66,15 +72,11 @@ Goal: High Risk Emotional Distress Scores: precision score >85, recall > 85, f1 
 
 
 
-Precision > 
-→ precision tells us how often the model is correct when classifying a post as high risk. High precision means the model makes few false positive errors.
-
-Recall > 
-→ Recall shows how often the model successfully detects high risk user text.
 
 
+## Analysis
 
-#Analysis ---The model correctly identifies most positive cases (high recall), while ensuring a reasonable balance of its predictions being correct ( precision). Since the primary goal is to detect the majority of high-risk posts, this balanced performance results in consistently high classification reliability rather than reliance on accuracy alone; suitable for low-intensity risk alert systems that provide non-intrusive, support banner notifications when detecting extreme emotional distress in user text language. 
+
 
 # Challenges
 -  pre-processing unstructured social media text. Through experimentation I learnt the importance of thoughtful preprocessing and class grouping decisions, as overly aggressive cleaning could remove important signal words while insufficient cleaning could introduce noise and reduce model performance.
